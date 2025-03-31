@@ -26,3 +26,6 @@ urls.py에 넘겨줄 url 주소 작성
 posts 앱에 url 파일 생성 및 작성하기 (admin)
 view.py에서 index 함수 작성
 index 페이지 만들기
+
+settings.py 에 MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
