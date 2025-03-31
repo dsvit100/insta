@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 <div class="container"></div>
 {% block body %}
+<div class="row"></div> 
+ <!-- 왼쪽 끝에서 오른쪽 끝까지. -->
 {% for post in posts %}
 {% include '_card.html' %}
 <!-- include 작은 모듈을 끼워넣는 형태 -->
