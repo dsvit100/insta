@@ -11,7 +11,7 @@ settings.py 앱 등록
 DIR에 BASE_DIR / 'templates' 설정 및 생성, base.html 구조 잡기
 
 models.py에 class(모델)생성 (Post)
-pillow 인스톨 (image를 업로드 하기 위해 필요)
+pillow 인스톨 (image를 업로드 하기 위해 필요) - 가상환경
 admin.py에 모델 등록 admin.site.register(Post)
 create super user 생성
 서버 돌려서 사진 2장 올려봄
@@ -21,3 +21,8 @@ create super user 생성
 
 pip freeze >> requirements.txt
 이 프로젝트를 사용하는 데에 지금까지 설치한 모든 데이터를 txt로 저장해줘
+
+urls.py에 넘겨줄 url 주소 작성
+posts 앱에 url 파일 생성 및 작성하기 (admin)
+view.py에서 index 함수 작성
+index 페이지 만들기
