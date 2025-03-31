@@ -11,9 +11,13 @@ settings.py 앱 등록
 DIR에 BASE_DIR / 'templates' 설정 및 생성, base.html 구조 잡기
 
 models.py에 class(모델)생성 (Post)
+pillow 인스톨 (image를 업로드 하기 위해 필요)
 admin.py에 모델 등록 admin.site.register(Post)
 create super user 생성
 서버 돌려서 사진 2장 올려봄
 
 사용자가 올리는 데이터들(image폴더, db)은 git에 올리지 않는 것이 좋음
 .gitignore 파일 최하단에 image/ 를 등록하기
+
+pip freeze >> requirements.txt
+이 프로젝트를 사용하는 데에 지금까지 설치한 모든 데이터를 txt로 저장해줘
