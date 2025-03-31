@@ -28,4 +28,4 @@ view.py에서 index 함수 작성
 index 페이지 만들기
 
 settings.py 에 MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'  
