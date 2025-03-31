@@ -6,9 +6,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <!-- 현재 유저가 로그인 상태인가요? -->
+          <a class="nav-link disabled" href="">{{user}}</a>
+          <a class="nav-link" href="{% url 'accounts:logout' %}">logout</a>
           <a class="nav-link" href="{% url 'posts:create' %}">Create</a>
+           {% else %}
+
+           {% endif %}
           <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
-          <a class="nav-link" href="#">login</a>
+          <a class="nav-link" href="{% url 'accounts:login' %}">login</a>
+          <!-- 현재 사용자 정보 (단추 활용하지 x -> disabled) -->
         </div>
       </div>
     </div>
