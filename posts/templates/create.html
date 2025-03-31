@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block body %}
+<form action="" method="POST" enctype="multipart/form-data">
+    <!-- form 내부에 파일이 추가되는 경우 인코딩타입enctype 작성 -->
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class="btn btn-primary">
+
+
+</form>
+{% endblock %}
