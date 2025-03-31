@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/', include('posts.urls')),
+    path('accounts/', include('accounts.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # 앞에 있는 경로로 들어오면 뒤를 실행해 주세요 (들어올 때마다 실행해주세요)
 
