@@ -20,7 +20,9 @@ create super user 생성
 .gitignore 파일 최하단에 image/ 를 등록하기
 
 pip freeze >> requirements.txt
-이 프로젝트를 사용하는 데에 지금까지 설치한 모든 데이터를 txt로 저장해줘
+이 프로젝트를 사용하는 데에 지금까지 설치한 모든 데이터를 txt로 저장해줘(뒤에 추가됨)
+pip freeze > requirements.txt
+덮어씌워줘
 
 urls.py에 넘겨줄 url 주소 작성
 posts 앱에 url 파일 생성 및 작성하기 (admin)
@@ -29,3 +31,5 @@ index 페이지 만들기
 
 settings.py 에 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'  
+
+django resized 라이브러리 설치
