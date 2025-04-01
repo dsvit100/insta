@@ -3,14 +3,23 @@
     <!-- 윗부분 정신을 잃어서 다시 봐야합니다... 부트스트랩 그리...드... -->
     <div class="card-header">
       <img class="rounded-circle" src="{{post.user.profile_image.url}}" alt="" width="30px">
-        <a href="">{{post.user.username}}</a>
+        <a href="" class="text-reset text-decoration-none">{{post.user.username}}</a>
         <!-- 게시물의 - 유저 컬럼의 - user아이디를 가져오기 -->
     </div>
-
     <img src="{{post.image.url}}" class="" alt="...">
     <!-- post.image.url은 어디서 온거지???????? -->
+
     <div class="card-body">
       <!-- <h5 class="card-title">Card title</h5> -->
+       <a href="{% url 'posts:like' post.id %}" class="text-reset text-decoration-none">
+        <!-- 몇 번 게시물을 좋아요 눌렀는지 알기 위해 post.id -->
+        {% if user in post.like_users.all %}
+        <i class="bi bi-balloon-heart-fill" style="color:hotpink"></i>
+        {% else %}
+        <i class="bi bi-balloon-heart"></i>
+        {% endif %}
+       </a>
+       <span>{{post.like_users.all|length}}명이 좋아합니다.</span>
       <p class="card-text">{{post.content}}</p>
       <p class="card-text">{{post.created_at|timesince}}</p>
       <!-- timesince ~시간 전 -->
