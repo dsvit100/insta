@@ -58,3 +58,4 @@ def like(request, post_id):
         # user.like_posts.add(post) # 좋아요를 받은 게시글 목록에 이 게시글을 추가해
         post.like_users.add(user) # 좋아요를 한 사람들 목록에 이 user를 추가해 
     return redirect('posts:index')
+

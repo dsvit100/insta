@@ -3,7 +3,7 @@
     <!-- 윗부분 정신을 잃어서 다시 봐야합니다... 부트스트랩 그리...드... -->
     <div class="card-header">
       <img class="rounded-circle" src="{{post.user.profile_image.url}}" alt="" width="30px">
-        <a href="" class="text-reset text-decoration-none">{{post.user.username}}</a>
+        <a href="{% url 'accounts:profile' post.user.username %}" class="text-reset text-decoration-none">{{post.user.username}}</a>
         <!-- 게시물의 - 유저 컬럼의 - user아이디를 가져오기 -->
     </div>
     <img src="{{post.image.url}}" class="" alt="...">

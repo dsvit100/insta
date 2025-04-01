@@ -26,7 +26,7 @@ class Post(models.Model): # 사진 + 내용만 있으니까 title 필요없음
     like_users = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name = 'like_posts'
-        # 역참조에 사용할 이름을 바꾼다 = like_posts로
+        # 역참조(_set)에 사용할 이름을 바꾼다 = like_posts로
     )
 
 
