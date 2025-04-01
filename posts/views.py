@@ -31,3 +31,14 @@ def create(request):
         'form': form,
     }
     return render(request, 'create.html', context)
+
+
+@login_required
+def comment_create(request, post_id):
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.user = request.user # 유저 정보를 넣어야하고
+        comment.post_id = post_id # 게시물 정보를 넣어야 함
+        comment.save() # 다 넣었으니 저장
+        return redirect('posts:index')

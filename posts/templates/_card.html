@@ -18,14 +18,17 @@
     </div>
     
     <div class="card-footer">
-      <form action="" method="POST">
+      {% if user.is_authenticated %}
+      <!-- 로그인을 해야만 하단의 코드가 실행됨 -->
+      <form action="{% url 'posts:comment_create' post.id %}" method="POST">
+        <!-- 각 post당 다르게 url을 가져가야 하기 때문에 post.id -->
         {% csrf_token %}
         <div class="row">
           <!-- row = 가상의 테두리를 만든 것(content부분), 그리드를 통해 배치를 바꾸기 위해 설정 -->
           <div class="col-9">
             <!-- form은 9칸 차지해줘 -->
           {% bootstrap_form form show_label=False wrapper_class='' %}
-          <!-- content 라벨 삭제, 기본으로 들어있던 mb-3을 임의로 삭제해줌 -->
+          <!-- content 라벨 삭제, 기본으로 들어있던 mb-3(하단공백)을 임의로 삭제해줌 -->
           </div>
           <div class="col-2">
             <!-- 단추는 2칸 차지해줘 -->
@@ -33,5 +36,6 @@
           </div>
         </div>
       </form>
+      {% endif %}
     </div>
   </div>
