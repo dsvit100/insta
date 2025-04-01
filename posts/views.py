@@ -59,3 +59,14 @@ def like(request, post_id):
         post.like_users.add(user) # 좋아요를 한 사람들 목록에 이 user를 추가해 
     return redirect('posts:index')
 
+
+def feed(request):
+    followings = request.user.followings.all() # request.user = 지금 로그인한 사람이 / .followings 팔로우하고 있는 사람들 / all 모두
+    posts = Post.objects.filter(user__in=followings) # user 컬럼에 오른쪽 followings에 포함된 사람들을 찾음
+    form = CommentForm()
+
+    context = {
+        'posts': posts,
+        'form': form,
+    }
+    return render(request, 'index.html', context)

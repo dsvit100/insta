@@ -13,6 +13,7 @@
           <a class="nav-link disabled" href="">{{user}}</a>
           <a class="nav-link" href="{% url 'accounts:logout' %}">logout</a>
           <a class="nav-link" href="{% url 'posts:create' %}">Create</a>
+          <a class="nav-link" href="{% url 'posts:feed' %}">Feed</a>
            {% else %}
 
            {% endif %}

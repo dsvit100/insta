@@ -10,7 +10,12 @@
             {% if user != user_profile %}
             <!-- 로그인 한 사람과 보고있는 프로필의 정보가 다르다면 -->
             <div class="col-9">
+                {% if user in user_profile.followers.all %}
+                <!-- 저 사람을 따르는 사람들 목록에 내가 있으면 -->
+                <a href="{% url 'accounts:follow' user_profile.username %}" class="btn btn-secondary">팔로우취소</a>
+                {% else %}
                 <a href="{% url 'accounts:follow' user_profile.username %}" class="btn btn-primary">팔로우</a>
+                {% endif %}
             </div>
             {% endif %}
         </div>
