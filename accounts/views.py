@@ -3,6 +3,7 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from .models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -35,7 +36,7 @@ def login(request):
     }
     return render(request, 'login.html', context)
 
-
+@login_required
 def logout(request):
     auth_logout(request)
     return redirect('posts:index')
@@ -47,3 +48,19 @@ def profile(request, username):
         'user_profile': user_profile,
     }
     return render(request, 'profile.html', context)
+
+@login_required
+def follow(request, username):
+    me = request.user # 로그인 한 본인
+    you = User.objects.get(username=username) # 내가 들어와있는 페이지의 유저
+
+    if me == you:
+        return redirect('accounts:profile', username)
+
+    # 너를 따르는 사람의 전체 목록에 내가 있으면 (팔로우를 했다는 것)
+    if me in you.followers.all():
+        you.followers.remove(me)
+    else:
+        you.followers.add(me) # 너의 팔로워 목록에 나를 넣어줘
+    return redirect('accounts:profile', username)
+

@@ -43,7 +43,7 @@ def comment_create(request, post_id):
         comment.save() # 다 넣었으니 저장
         return redirect('posts:index')
 
-
+@login_required
 def like(request, post_id):
     # 현재 로그인 한 사람, 어떤 게시물을 (좋아요 눌렀는지)
     user = request.user

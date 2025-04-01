@@ -7,14 +7,18 @@
     <div class="col-9">
         <div class="row">
             <div class="col-3">{{user_profile.username}}</div>
+            {% if user != user_profile %}
+            <!-- 로그인 한 사람과 보고있는 프로필의 정보가 다르다면 -->
             <div class="col-9">
-                <a href="" class="btn btn-primary">팔로우</a>
+                <a href="{% url 'accounts:follow' user_profile.username %}" class="btn btn-primary">팔로우</a>
             </div>
+            {% endif %}
         </div>
         <div class="row">
-            <div class="col-4">게시물:</div>
-            <div class="col-4">팔로워:</div>
-            <div class="col-4">팔로우:</div>
+            <div class="col-4">게시물: {{user_profile.post_set.all|length}}</div>
+            <!-- 해당 페이지 유저가 작성한 모든 게시물 -->
+            <div class="col-4">팔로워: {{user_profile.followers.all|length}}</div>
+            <div class="col-4">팔로우: {{user_profile.followings.all|length}}</div>
 
         </div>
     </div>
