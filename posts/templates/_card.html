@@ -37,5 +37,11 @@
         </div>
       </form>
       {% endif %}
+      <div class="mt-2">
+      {% for comment in post.comment_set.all %}
+      <!-- 하나의 포스트에 딸린 모든 커멘트를 다 가져와 -->
+       <li>{{comment.user}}: {{comment.content}}</li>
+      {% endfor %}
+    </div>
     </div>
   </div>
