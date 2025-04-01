@@ -23,5 +23,5 @@ class Post(models.Model): # 사진 + 내용만 있으니까 title 필요없음
 
 class Comment(models.Model): # POST와 1:N, 유저와도 1:N
     content = models.CharField(max_length=200)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE) # foreignkey를 쓰면 on_delete는 필수인자자
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

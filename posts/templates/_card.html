@@ -1,17 +1,37 @@
-<div class="card my-3 p-0 col-12 offset-md-3 col-md-4">
-    <!-- 윗부분 정신을 잃어서 다시 봐야합니다... 그리...드... -->
+{% load django_bootstrap5 %}
+<div class="card my-3 p-0 col-12 col-md-6 col-xl-4">
+    <!-- 윗부분 정신을 잃어서 다시 봐야합니다... 부트스트랩 그리...드... -->
     <div class="card-header">
       <img class="rounded-circle" src="{{post.user.profile_image.url}}" alt="" width="30px">
         <a href="">{{post.user.username}}</a>
         <!-- 게시물의 - 유저 컬럼의 - user아이디를 가져오기 -->
     </div>
+
     <img src="{{post.image.url}}" class="" alt="...">
     <!-- post.image.url은 어디서 온거지???????? -->
     <div class="card-body">
       <!-- <h5 class="card-title">Card title</h5> -->
-      <p class="card-text">{{post.context}}</p>
+      <p class="card-text">{{post.content}}</p>
       <p class="card-text">{{post.created_at|timesince}}</p>
       <!-- timesince ~시간 전 -->
       <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+    
+    <div class="card-footer">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+          <!-- row = 가상의 테두리를 만든 것(content부분), 그리드를 통해 배치를 바꾸기 위해 설정 -->
+          <div class="col-9">
+            <!-- form은 9칸 차지해줘 -->
+          {% bootstrap_form form show_label=False wrapper_class='' %}
+          <!-- content 라벨 삭제, 기본으로 들어있던 mb-3을 임의로 삭제해줌 -->
+          </div>
+          <div class="col-2">
+            <!-- 단추는 2칸 차지해줘 -->
+            <input type="submit" class="btn btn-primary">
+          </div>
+        </div>
+      </form>
     </div>
   </div>
