@@ -19,3 +19,9 @@ class Post(models.Model): # 사진 + 내용만 있으니까 title 필요없음
     )
     # 사진을 첨부하면 image 폴더가 생성되고 그 안에 이미지가 저장됨 (upload_to='image')
     # 이미지필드를 사용하기 위해서는 pillow가 필요
+
+
+class Comment(models.Model): # POST와 1:N, 유저와도 1:N
+    content = models.CharField(max_length=200)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
