@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 <div class="container"></div>
 {% block body %}
-<div class="row"></div> 
+<div class="row">
  <!-- 왼쪽 끝에서 오른쪽 끝까지. -->
 {% for post in posts %}
 {% include '_card.html' %}
 <!-- include 작은 모듈을 끼워넣는 형태 -->
 {% endfor %}
+</div> 
+
+<!-- jaba script -->
+<script>
+    // i(아이콘)를 다 가져오면 인스타 아이콘도 가지고 오기 때문에
+    // _card.html에서 적용할 하트i 값에 class = like 추가해서
+    // 찾아올 i값 특정
+    let likeBtns = document.querySelectorAll('i.like')
+    
+    likeBtns.forEach(function(likeBtn){
+        likeBtn.addEventListener('click', function(e){
+            const postId = console.log(e.target.dataset.postId)
+            // _card.html에 설정했던 post-id값을 js가 dataset에 자동으로 작성해줌
+
+        })
+        // 버튼 하나하나에 이벤트리스너 달기
+    })
+</script>
 {% endblock %}

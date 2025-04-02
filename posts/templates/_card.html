@@ -11,14 +11,13 @@
 
     <div class="card-body">
       <!-- <h5 class="card-title">Card title</h5> -->
-       <a href="{% url 'posts:like' post.id %}" class="text-reset text-decoration-none">
         <!-- 몇 번 게시물을 좋아요 눌렀는지 알기 위해 post.id -->
         {% if user in post.like_users.all %}
-        <i class="bi bi-balloon-heart-fill" style="color:hotpink"></i>
+        <!-- 몇 번 게시물의 like 버튼인지 post-id 설정 -->
+        <i class="bi like bi-balloon-heart-fill" class="like" style="color:hotpink" data-post-id="{{post.id}}"></i>
         {% else %}
-        <i class="bi bi-balloon-heart"></i>
+        <i class="bi like bi-balloon-heart" data-post-id="{{post.id}}"></i>
         {% endif %}
-       </a>
        <span>{{post.like_users.all|length}}명이 좋아합니다.</span>
       <p class="card-text">{{post.content}}</p>
       <p class="card-text">{{post.created_at|timesince}}</p>
