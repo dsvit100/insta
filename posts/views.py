@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+# 딕셔너리를 json으로 바꿔주는 라이브러리
 
 # Create your views here.
 
@@ -70,3 +72,25 @@ def feed(request):
         'form': form,
     }
     return render(request, 'index.html', context)
+
+
+
+def like_async(request, id):
+    user = request.user
+    post = Post.objects.get(id=id)
+    
+    if user in post.like_users.all():
+        post.like_users.remove(user)
+        status = False
+    else:
+        post.like_users.add(user)
+        status = True
+
+# 좋아요 버튼이 추가된 부분만 json 구조로 남겨줄 것
+    context = {
+        'post_id': id,
+        'status': status,
+        # true 혹은 false가 들어가있음
+    }
+
+    return JsonResponse(context)

@@ -15,11 +15,38 @@
     // _card.html에서 적용할 하트i 값에 class = like 추가해서
     // 찾아올 i값 특정
     let likeBtns = document.querySelectorAll('i.like')
+
+    // 함수
+    // button 태그, 게시물 정보를 인자로 받음
+    let likeRequest = async (btn, postId) => {
+        let likeURL = `/posts/${postId}/like-async/`
+        // 원래 url이 아니라 다른 url을 만든 것 (/likes-async)
     
+        let res = await fetch(likeURL)
+        // 장고 서버에 요청을 보내고 결과는 res에 들어올 것
+        // asnyc 비동기 코드
+        // await 잠시 기다려, 위의 코드가 다 실행될 때까지
+
+        let result = await res.json()
+
+        if (result.status) {
+            btn.style.color = 'hotpink'
+            btn.classList.remove('bi-balloon-heart')
+            btn.classList.add('bi-balloon-heart-fill')
+        } else {
+            btn.style.color = 'black'
+            btn.classList.remove('bi-balloon-heart-fill')
+            btn.classList.add('bi-balloon-heart')
+        }
+    }
+    
+
     likeBtns.forEach(function(likeBtn){
         likeBtn.addEventListener('click', function(e){
-            const postId = console.log(e.target.dataset.postId)
+            const postId = e.target.dataset.postId
             // _card.html에 설정했던 post-id값을 js가 dataset에 자동으로 작성해줌
+
+            likeRequest(likeBtn, postId)
 
         })
         // 버튼 하나하나에 이벤트리스너 달기

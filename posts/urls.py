@@ -10,4 +10,5 @@ urlpatterns = [
     # 댓글을 저장할 공간을 설정해 줌, 댓글창을 보여주는 곳은 index일 것
     path('<int:post_id>/like/', views.like, name='like'),
     path('feed/', views.feed, name='feed'),
+    path('<int:id>/like-async/', views.like_async, name='like_async'),
 ]
