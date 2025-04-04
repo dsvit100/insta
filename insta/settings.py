@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure---l+-3e%1rfpl7k(=!u+#=$doy6l4joa0q=n+us&a-gw4a)#4*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # 어떤 사이트가 django 서버에 들어올 수 있는지
+    '*',
+]
 
 
 # Application definition
